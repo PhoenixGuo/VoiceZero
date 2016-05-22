@@ -14,6 +14,10 @@
                 android:id="@+id/nv_browse"
                 android:icon="@drawable/ic_visibility_black_24dp"
                 android:title="@string/browse" />
+            <item
+                android:id="@+id/nv_theme"
+                android:icon="@drawable/ic_wb_sunny_black_24dp"
+                android:title="@string/theme" />
 
         </menu>
     </item>
