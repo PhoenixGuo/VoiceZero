@@ -37,6 +37,7 @@ public class MainActivity extends BaseCompatActivity
     private Button btn_start_listening;
     private Toolbar toolbar;
     private DrawerLayout dl_main;
+    private Toast backToast;
 
     private SpeechRecognizer mIat;
     private RecognizerDialog iatDialog;
@@ -124,6 +125,8 @@ public class MainActivity extends BaseCompatActivity
                 R.string.navigation_drawer_close
         );
         dl_main.addDrawerListener(toggle);
+        //添加home打开drawerlayout的动画
+        toggle.syncState();
     }
 
     //OnClickListener_start
@@ -174,5 +177,24 @@ public class MainActivity extends BaseCompatActivity
         return false;
     }
     //OnMenuItemClickListener_end
+
+    @Override
+    public void onBackPressed() {
+        exitApp();
+    }
+
+    private void exitApp() {
+        if (backToast != null
+                && backToast.getView().getWindowToken() != null) {
+            finish();
+        } else {
+            backToast = Toast.makeText(
+                    MainActivity.this,
+                    R.string.back,
+                    Toast.LENGTH_SHORT
+            );
+            backToast.show();
+        }
+    }
 
 }
