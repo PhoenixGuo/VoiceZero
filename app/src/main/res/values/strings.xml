@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">VoiceZero</string>
+    <string name="start_listening">Start Listening</string>
+
+    <!-- menu -->
+    <string name="share">Share</string>
+    <string name="remind">Remind</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="coming_soon">Coming Soon</string>
+
+    <!-- dialog -->
+    <string name="i_know_it">I know it</string>
+    <string name="first_use_alert_message">To use the speech recognition function, the need to open the mobile phone network</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">音零</string>
+    <string name="start_listening">开始听写</string>
+
+    <!-- menu -->
+    <string name="share">分享</string>
+    <string name="remind">提醒</string>
+    <string name="favorite">喜欢</string>
+    <string name="setting">设置</string>
+    <string name="coming_soon">下个版本添加</string>
+
+    <!-- dialog -->
+    <string name="i_know_it">我知道了</string>
+    <string name="first_use_alert_message">要使用语音识别功能，需要开启手机网络</string>
+
+</resources>
