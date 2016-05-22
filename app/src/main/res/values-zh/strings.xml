@@ -11,8 +11,16 @@
     <string name="setting">设置</string>
     <string name="coming_soon">下个版本添加</string>
 
+    <string name="part_1">第一部分</string>
+    <string name="profile">个人中心</string>
+    <string name="browse">浏览</string>
+
     <!-- dialog -->
     <string name="i_know_it">我知道了</string>
     <string name="first_use_alert_message">要使用语音识别功能，需要开启手机网络</string>
+
+    <!-- drawerlayout-->
+    <string name="navigation_drawer_open">打开</string>
+    <string name="navigation_drawer_close">关闭</string>
 
 </resources>

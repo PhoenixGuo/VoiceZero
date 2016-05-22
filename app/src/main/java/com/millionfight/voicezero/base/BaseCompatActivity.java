@@ -30,11 +30,11 @@ public abstract class BaseCompatActivity extends AppCompatActivity {
 
     protected abstract int getLayoutId();
 
-    protected void showThost(CharSequence info) {
+    protected void showToast(CharSequence info) {
         Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
     }
 
-    protected void showThost(int infoId) {
+    protected void showToast(int infoId) {
         Toast.makeText(this, infoId, Toast.LENGTH_SHORT).show();
     }
 

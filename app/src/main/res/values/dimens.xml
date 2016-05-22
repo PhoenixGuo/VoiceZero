@@ -16,4 +16,7 @@
     <dimen name="main_toolbar_icon">32dp</dimen>
     <dimen name="mainAct_right_btn_width">34dip</dimen>
 
+    <!-- Navigation-->
+    <dimen name="nav_header_height">160dp</dimen>
+
 </resources>

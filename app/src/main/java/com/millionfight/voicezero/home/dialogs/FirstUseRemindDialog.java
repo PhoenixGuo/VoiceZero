@@ -12,14 +12,13 @@ import com.millionfight.voicezero.utils.SharedPreferencesUtil;
  */
 public class FirstUseRemindDialog {
 
-    public static void makeDialog(final Activity activty) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activty);
-        builder.setCancelable(true);
+    public static void makeDialog(final Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setMessage(R.string.first_use_alert_message);
         builder.setPositiveButton(R.string.i_know_it, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                SharedPreferencesUtil.setFirstUse(activty);
+                SharedPreferencesUtil.setFirstUse(activity);
             }
         });
         builder.show();

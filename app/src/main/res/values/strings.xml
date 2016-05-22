@@ -10,8 +10,16 @@
     <string name="setting">Setting</string>
     <string name="coming_soon">Coming Soon</string>
 
+    <string name="part_1">Part one</string>
+    <string name="profile">Profile</string>
+    <string name="browse">Browse</string>
+
     <!-- dialog -->
     <string name="i_know_it">I know it</string>
     <string name="first_use_alert_message">To use the speech recognition function, the need to open the mobile phone network</string>
+
+    <!-- drawerlayout-->
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="navigation_drawer_close">Drawer Close</string>
 
 </resources>

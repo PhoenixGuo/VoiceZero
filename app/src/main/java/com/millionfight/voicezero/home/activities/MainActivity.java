@@ -1,6 +1,8 @@
 package com.millionfight.voicezero.home.activities;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -34,6 +36,7 @@ public class MainActivity extends BaseCompatActivity
 
     private Button btn_start_listening;
     private Toolbar toolbar;
+    private DrawerLayout dl_main;
 
     private SpeechRecognizer mIat;
     private RecognizerDialog iatDialog;
@@ -94,6 +97,10 @@ public class MainActivity extends BaseCompatActivity
         btn_start_listening = (Button) findViewById(R.id.btn_start_listening);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        dl_main = (DrawerLayout) findViewById(R.id.dl_main);
+
     }
 
     @Override
@@ -109,8 +116,17 @@ public class MainActivity extends BaseCompatActivity
         super.setListener();
         btn_start_listening.setOnClickListener(this);
         toolbar.setOnMenuItemClickListener(this);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                dl_main,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        );
+        dl_main.addDrawerListener(toggle);
     }
 
+    //OnClickListener_start
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -121,13 +137,14 @@ public class MainActivity extends BaseCompatActivity
                 break;
         }
     }
+    //OnClickListener_end
 
     @Override
     public void onResult(RecognizerResult recognizerResult, boolean b) {
         String voiceResult = JsonParser.parseIatResult(recognizerResult.getResultString());
         sb.append(voiceResult);
         if (b) {
-            showThost(sb.toString());
+            showToast(sb.toString());
         }
     }
 
@@ -136,17 +153,18 @@ public class MainActivity extends BaseCompatActivity
         Log.d("speechError", speechError.toString());
     }
 
+    //OnMenuItemClickListener_start
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.share:
-                showThost(R.string.coming_soon);
+                showToast(R.string.coming_soon);
                 break;
             case R.id.remind:
-                showThost(R.string.coming_soon);
+                showToast(R.string.coming_soon);
                 break;
             case R.id.favorite:
-                showThost(R.string.coming_soon);
+                showToast(R.string.coming_soon);
                 break;
             case R.id.setting:
 
@@ -155,4 +173,6 @@ public class MainActivity extends BaseCompatActivity
 
         return false;
     }
+    //OnMenuItemClickListener_end
+
 }
