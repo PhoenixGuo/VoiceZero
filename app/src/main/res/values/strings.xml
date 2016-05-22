@@ -22,4 +22,6 @@
     <string name="navigation_drawer_open">Drawer Open</string>
     <string name="navigation_drawer_close">Drawer Close</string>
 
+    <string name="back">Click back again to exit VoiceZero</string>
+
 </resources>
