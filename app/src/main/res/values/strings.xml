@@ -6,14 +6,15 @@
     <!-- menu -->
     <string name="share">Share</string>
     <string name="remind">Remind</string>
-    <string name="favorite">Favorite</string>
+    <string name="gesture">Gesture</string>
     <string name="setting">Setting</string>
-    <string name="theme">主题</string>
     <string name="coming_soon">Coming Soon</string>
 
     <string name="part_1">Part one</string>
-    <string name="profile">Profile</string>
-    <string name="browse">Browse</string>
+    <string name="profile">My Profile</string>
+    <string name="favorite">My Favorite</string>
+    <string name="browse">My Browse</string>
+    <string name="theme">Change Theme</string>
 
     <!-- dialog -->
     <string name="i_know_it">I know it</string>

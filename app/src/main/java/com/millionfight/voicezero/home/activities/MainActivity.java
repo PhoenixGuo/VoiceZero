@@ -84,7 +84,7 @@ public class MainActivity extends BaseCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
+        getMenuInflater().inflate(R.menu.menu_top_main_activity, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -175,7 +175,7 @@ public class MainActivity extends BaseCompatActivity
             case R.id.remind:
                 showToast(R.string.coming_soon);
                 break;
-            case R.id.favorite:
+            case R.id.gesture:
                 showToast(R.string.coming_soon);
                 break;
             case R.id.setting:

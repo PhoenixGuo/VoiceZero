@@ -18,11 +18,11 @@
         android:visible="true"
         app:showAsAction="always" />
     <item
-        android:id="@+id/favorite"
-        android:icon="@drawable/ic_favorite_border_white_24dp"
+        android:id="@+id/gesture"
+        android:icon="@drawable/ic_swap_horiz_white_24dp"
         android:orderInCategory="2"
         android:textColor="@android:color/primary_text_dark"
-        android:title="@string/favorite"
+        android:title="@string/gesture"
         android:visible="true"
         app:showAsAction="always" />
 
