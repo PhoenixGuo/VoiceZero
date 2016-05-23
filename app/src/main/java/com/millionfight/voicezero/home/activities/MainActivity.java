@@ -20,10 +20,12 @@ import com.iflytek.cloud.SpeechRecognizer;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.millionfight.voicezero.R;
+import com.millionfight.voicezero.UMengShare;
 import com.millionfight.voicezero.base.BaseCompatActivity;
 import com.millionfight.voicezero.home.dialogs.FirstUseRemindDialog;
 import com.millionfight.voicezero.utils.JsonParser;
 import com.millionfight.voicezero.utils.SharedPreferencesUtil;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 
 
 public class MainActivity extends BaseCompatActivity
@@ -161,7 +163,14 @@ public class MainActivity extends BaseCompatActivity
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.share:
-                showToast(R.string.coming_soon);
+                SHARE_MEDIA[] shareMedias = new SHARE_MEDIA[]
+                        {
+                                SHARE_MEDIA.WEIXIN,
+                                SHARE_MEDIA.WEIXIN_CIRCLE,
+                                SHARE_MEDIA.EMAIL,
+                                SHARE_MEDIA.SMS
+                        };
+                new UMengShare(this, shareMedias).showShare();
                 break;
             case R.id.remind:
                 showToast(R.string.coming_soon);

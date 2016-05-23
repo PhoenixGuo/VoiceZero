@@ -24,6 +24,11 @@
     <string name="navigation_drawer_open">打开</string>
     <string name="navigation_drawer_close">关闭</string>
 
+    <!--友盟社会化组件 -->
+    <string name="umeng_share_succeed">分享成功</string>
+    <string name="umeng_share_failed">分享失败</string>
+    <string name="umeng_share_canceled">分享取消</string>
+
     <string name="back">再按一次返回键退出</string>
 
 </resources>

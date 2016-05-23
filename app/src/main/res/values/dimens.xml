@@ -17,6 +17,6 @@
     <dimen name="mainAct_right_btn_width">34dip</dimen>
 
     <!-- Navigation-->
-    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="nav_header_height">180dp</dimen>
 
 </resources>
