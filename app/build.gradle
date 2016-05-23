@@ -34,6 +34,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.android.support:design:23.3.0'
+    compile files('libs/umeng_social_sdk.jar')
+    compile files('libs/SocialSDK_email.jar')
 }
 repositories {
     mavenCentral()
