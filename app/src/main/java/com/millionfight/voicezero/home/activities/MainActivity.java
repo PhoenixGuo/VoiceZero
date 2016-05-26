@@ -1,5 +1,7 @@
 package com.millionfight.voicezero.home.activities;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -8,7 +10,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.iflytek.cloud.ErrorCode;
@@ -25,6 +30,7 @@ import com.millionfight.voicezero.base.BaseCompatActivity;
 import com.millionfight.voicezero.home.dialogs.FirstUseRemindDialog;
 import com.millionfight.voicezero.utils.JsonParser;
 import com.millionfight.voicezero.utils.SharedPreferencesUtil;
+import com.skyfishjy.library.RippleBackground;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 
@@ -48,6 +54,15 @@ public class MainActivity extends BaseCompatActivity
     private boolean isFirstUse;
 
     private StringBuilder sb = new StringBuilder();
+
+    private MenuItem refreshItem;
+
+    private int[] menuItemDrawable = {
+            R.drawable.ic_share_white_24dp,
+            R.drawable.ic_notifications_white_24dp,
+            R.drawable.ic_swap_horiz_white_24dp,
+            R.drawable.ic_more_vert_white_24dp
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,9 +100,38 @@ public class MainActivity extends BaseCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_top_main_activity, menu);
+        showRefreshAnimation(menu.getItem(1));
         return super.onCreateOptionsMenu(menu);
     }
 
+    public void showRefreshAnimation(MenuItem item) {
+        refreshItem = item;
+
+        View menuItemActionView = getLayoutInflater().inflate(
+                R.layout.action_view, null
+        );
+        ImageView iv = (ImageView) menuItemActionView.findViewById(R.id.centerImage);
+        iv.setImageDrawable(item.getIcon());
+        refreshItem.setActionView(menuItemActionView);
+
+        final RippleBackground rippleBackground = (RippleBackground) menuItemActionView.findViewById(R.id.content);
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rippleBackground.startRippleAnimation();
+            }
+        });
+    }
+
+    private void hideRefreshAnimation() {
+        if (refreshItem != null) {
+            View view = refreshItem.getActionView();
+            if (view != null) {
+                view.clearAnimation();
+                refreshItem.setActionView(null);
+            }
+        }
+    }
 
     @Override
     protected int getLayoutId() {
@@ -98,12 +142,31 @@ public class MainActivity extends BaseCompatActivity
     protected void findViews() {
         super.findViews();
         btn_start_listening = (Button) findViewById(R.id.btn_start_listening);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        dl_main = (DrawerLayout) findViewById(R.id.dl_main);
 
+/*        for (int i = 0; i < topToolbarMenu.size(); i++) {
+            View menuItemActionView = getLayoutInflater().inflate(
+                    R.layout.action_view, null
+            );
+            ImageView iv = (ImageView) menuItemActionView.findViewById(R.id.centerImage);
+            iv.setImageResource(menuItemDrawable[i]);
+            topToolbarMenu.getItem(i).setActionView(menuItemActionView);
+            if (i == 2) {
+                final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.content);
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        rippleBackground.startRippleAnimation();
+                    }
+                });
+            }
+        }*/
+
+        dl_main = (DrawerLayout) findViewById(R.id.dl_main);
     }
 
     @Override
@@ -129,6 +192,7 @@ public class MainActivity extends BaseCompatActivity
         dl_main.addDrawerListener(toggle);
         //添加home打开drawerlayout的动画
         toggle.syncState();
+
     }
 
     //OnClickListener_start
@@ -173,9 +237,11 @@ public class MainActivity extends BaseCompatActivity
                 new UMengShare(this, shareMedias).showShare();
                 break;
             case R.id.remind:
+                showRefreshAnimation(item);
                 showToast(R.string.coming_soon);
                 break;
             case R.id.gesture:
+                hideRefreshAnimation();
                 showToast(R.string.coming_soon);
                 break;
             case R.id.setting:

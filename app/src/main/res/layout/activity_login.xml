@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/super_very_large_spacing">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="@dimen/avatar_very_large_size"
+        android:layout_height="@dimen/avatar_very_large_size"
+        android:layout_marginTop="@dimen/super_very_large_spacing"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_spacing"
+        android:text="萌即是正义"
+        android:textColor="@color/colorAccent"
+        android:textSize="25sp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small_spacing"
+        android:layout_marginTop="@dimen/small_spacing">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入音符号" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small_spacing"
+        android:layout_marginTop="@dimen/small_spacing">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/super_very_large_spacing"
+        android:background="@color/colorPrimaryDark"
+        android:padding="@dimen/medium_spacing"
+        android:text="登录"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

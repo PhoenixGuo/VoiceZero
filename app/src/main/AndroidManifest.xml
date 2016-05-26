@@ -45,13 +45,16 @@
             android:name="UMENG_APPKEY"
             android:value="574371ed67e58e0ec200068f" />
 
-        <activity android:name=".home.activities.MainActivity">
+        <activity android:name="login.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".home.activities.MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <!-- 友盟社会化分享start -->
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"

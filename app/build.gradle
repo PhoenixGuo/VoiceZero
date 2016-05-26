@@ -37,6 +37,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile files('libs/umeng_social_sdk.jar')
     compile files('libs/SocialSDK_email.jar')
+    compile 'com.skyfishjy.ripplebackground:library:1.0.1'
 }
 repositories {
     mavenCentral()
