@@ -1,0 +1,140 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for E in C:\jdk7u2_64p\jdk7u17\hotspot\src\share\vm\utilities/taskqueue.hpp
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:58), pid=12352, tid=15552
+#
+# JRE version: 7.0_17-b02
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (23.7-b01 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000002b3d800):  JavaThread "Unknown thread" [_thread_in_vm, id=15552, stack(0x0000000002ef0000,0x0000000002ff0000)]
+
+Stack: [0x0000000002ef0000,0x0000000002ff0000]
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000000002b3d800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=15552, stack(0x0000000002ef0000,0x0000000002ff0000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 56896K, used 976K [0x00000000eaab0000, 0x00000000eea20000, 0x0000000100000000)
+  eden space 48832K, 2% used [0x00000000eaab0000,0x00000000eaba42f8,0x00000000eda60000)
+  from space 8064K, 0% used [0x00000000ee240000,0x00000000ee240000,0x00000000eea20000)
+  to   space 8064K, 0% used [0x00000000eda60000,0x00000000eda60000,0x00000000ee240000)
+ ParOldGen       total 130048K, used 0K [0x00000000c0000000, 0x00000000c7f00000, 0x00000000eaab0000)
+  object space 130048K, 0% used [0x00000000c0000000,0x00000000c0000000,0x00000000c7f00000)
+ PSPermGen       total 21248K, used 702K [0x00000000bae00000, 0x00000000bc2c0000, 0x00000000c0000000)
+  object space 21248K, 3% used [0x00000000bae00000,0x00000000baeafb18,0x00000000bc2c0000)
+
+Card table byte_map: [0x00000000060f0000,0x0000000006320000] byte_map_base: 0x0000000005b19000
+
+Polling page: 0x0000000002a90000
+
+Code Cache  [0x00000000030f0000, 0x0000000003360000, 0x00000000060f0000)
+ total_blobs=39 nmethods=0 adapters=20 free_code_cache=48889Kb largest_free_block=50062912
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.361 loading class 0x0000000002fff820
+Event: 0.361 loading class 0x0000000002fff820 done
+Event: 0.361 loading class 0x0000000002fff9d0
+Event: 0.361 loading class 0x0000000002fff9d0 done
+Event: 0.361 loading class 0x0000000002fffa00
+Event: 0.361 loading class 0x0000000002fffa00 done
+Event: 0.426 loading class 0x0000000003039a20
+Event: 0.427 loading class 0x0000000003039a20 done
+Event: 0.427 loading class 0x0000000003039860
+Event: 0.427 loading class 0x0000000003039860 done
+
+
+Dynamic libraries:
+0x00007ff76d0b0000 - 0x00007ff76d0e3000 	E:\Java\jdk1.7.0_17\bin\java.exe
+0x00007fffbd330000 - 0x00007fffbd4d9000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007fffbb960000 - 0x00007fffbba99000 	C:\Windows\system32\KERNEL32.DLL
+0x00007fffba770000 - 0x00007fffba87e000 	C:\Windows\system32\KERNELBASE.dll
+0x00007fffbada0000 - 0x00007fffbae45000 	C:\Windows\system32\ADVAPI32.dll
+0x00007fffbaeb0000 - 0x00007fffbb021000 	C:\Windows\system32\USER32.dll
+0x00007fffb8570000 - 0x00007fffb87ca000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.16384_none_62475f7becb72503\COMCTL32.dll
+0x00007fffbbaa0000 - 0x00007fffbbb47000 	C:\Windows\system32\msvcrt.dll
+0x00007fffbae50000 - 0x00007fffbaea7000 	C:\Windows\SYSTEM32\sechost.dll
+0x00007fffbb710000 - 0x00007fffbb846000 	C:\Windows\system32\RPCRT4.dll
+0x00007fffbb180000 - 0x00007fffbb2c5000 	C:\Windows\system32\GDI32.dll
+0x00007fffbb4d0000 - 0x00007fffbb504000 	C:\Windows\system32\IMM32.DLL
+0x00007fffba970000 - 0x00007fffbaaa9000 	C:\Windows\system32\MSCTF.dll
+0x0000000076040000 - 0x0000000076111000 	E:\Java\jdk1.7.0_17\jre\bin\msvcr100.dll
+0x00000000765a0000 - 0x0000000076cbf000 	E:\Java\jdk1.7.0_17\jre\bin\server\jvm.dll
+0x00007fffb7fe0000 - 0x00007fffb7fe9000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007fffba460000 - 0x00007fffba47f000 	C:\Windows\system32\WINMM.dll
+0x00007fffbaac0000 - 0x00007fffbaac7000 	C:\Windows\system32\PSAPI.DLL
+0x00007fffbaad0000 - 0x00007fffbab28000 	C:\Windows\system32\WS2_32.dll
+0x00007fffba3c0000 - 0x00007fffba3ea000 	C:\Windows\system32\WINMMBASE.dll
+0x00007fffbaab0000 - 0x00007fffbaab9000 	C:\Windows\system32\NSI.dll
+0x00007fffba880000 - 0x00007fffba8ca000 	C:\Windows\SYSTEM32\cfgmgr32.dll
+0x00007fffba390000 - 0x00007fffba3b6000 	C:\Windows\system32\DEVOBJ.dll
+0x00000000764b0000 - 0x00000000764bf000 	E:\Java\jdk1.7.0_17\jre\bin\verify.dll
+0x0000000076480000 - 0x00000000764a8000 	E:\Java\jdk1.7.0_17\jre\bin\java.dll
+0x0000000076460000 - 0x0000000076475000 	E:\Java\jdk1.7.0_17\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Xmx1024M -Dfile.encoding=GBK -Duser.country=CN -Duser.language=zh -Duser.variant 
+java_command: com.android.dx.command.Main --dex --num-threads=4 --output E:\AndroidStudioProjects\VoiceZero\app\build\intermediates\pre-dexed\debug\umeng_social_sdk_1a99d43d8f10824b1c8ae0b88cc844fc4e2037f9.jar E:\AndroidStudioProjects\VoiceZero\app\libs\umeng_social_sdk.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=E:\Java\jdk1.7.0_17
+CLASSPATH=.;E:\Java\jdk1.7.0_17\lib\dt.jar;E:\Java\jdk1.7.0_17\lib\tools.jar;
+PATH=E:\Java\jdk1.7.0_17\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;H:\Program Files\Git\cmd
+USERNAME=Administrator
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 61 Stepping 4, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8 , 64 bit Build 9200 
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, ht, tsc, tscinvbit
+
+Memory: 4k page, physical 12480436k(4678764k free), swap 12480436k(52052k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (23.7-b01) for windows-amd64 JRE (1.7.0_17-b02), built on Mar  1 2013 03:38:30 by "java_re" with unknown MS VC++:1600
+
+time: Tue May 24 06:53:00 2016
+elapsed time: 1 seconds
+

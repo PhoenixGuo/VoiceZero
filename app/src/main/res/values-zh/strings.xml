@@ -7,14 +7,15 @@
     <!-- menu -->
     <string name="share">分享</string>
     <string name="remind">提醒</string>
-    <string name="favorite">喜欢</string>
+    <string name="gesture">手势</string>
     <string name="setting">设置</string>
-    <string name="theme">主题</string>
     <string name="coming_soon">下个版本添加</string>
 
     <string name="part_1">第一部分</string>
     <string name="profile">个人中心</string>
-    <string name="browse">浏览</string>
+    <string name="favorite">我的收藏</string>
+    <string name="browse">浏览过的</string>
+    <string name="theme">切换主题</string>
 
     <!-- dialog -->
     <string name="i_know_it">我知道了</string>

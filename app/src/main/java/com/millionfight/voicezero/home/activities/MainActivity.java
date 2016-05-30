@@ -1,6 +1,7 @@
 package com.millionfight.voicezero.home.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.iflytek.cloud.ErrorCode;
@@ -23,8 +25,10 @@ import com.millionfight.voicezero.R;
 import com.millionfight.voicezero.UMengShare;
 import com.millionfight.voicezero.base.BaseCompatActivity;
 import com.millionfight.voicezero.home.dialogs.FirstUseRemindDialog;
+import com.millionfight.voicezero.utils.ConstantUtils;
 import com.millionfight.voicezero.utils.JsonParser;
 import com.millionfight.voicezero.utils.SharedPreferencesUtil;
+import com.skyfishjy.library.RippleBackground;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 
@@ -40,14 +44,21 @@ public class MainActivity extends BaseCompatActivity
     private Toolbar toolbar;
     private DrawerLayout dl_main;
     private Toast backToast;
+    private NavigationView nv_left;
+    private NavigationView nv_right;
 
     private SpeechRecognizer mIat;
     private RecognizerDialog iatDialog;
     private InitListener mInitListener;
 
+    private RippleBackground rippleBackground;
+
     private boolean isFirstUse;
 
     private StringBuilder sb = new StringBuilder();
+
+    private Menu menu;
+    private MenuItem remindItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +95,14 @@ public class MainActivity extends BaseCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.menu_top_main_activity, menu);
+//        showRemindAnimation(menu.getItem(1), 1);
+        /*for (int i = 0; i < menu.size(); i++) {
+            showRemindAnimation(menu.getItem(i), 1);
+        }*/
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     protected int getLayoutId() {
@@ -98,12 +113,18 @@ public class MainActivity extends BaseCompatActivity
     protected void findViews() {
         super.findViews();
         btn_start_listening = (Button) findViewById(R.id.btn_start_listening);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        dl_main = (DrawerLayout) findViewById(R.id.dl_main);
 
+        dl_main = (DrawerLayout) findViewById(R.id.dl_main);
+        nv_left = (NavigationView) findViewById(R.id.nv_left);
+        nv_right = (NavigationView) findViewById(R.id.nv_right);
+
+        //默认上来是左手操作
+        dl_main.removeView(nv_right);
     }
 
     @Override
@@ -129,6 +150,7 @@ public class MainActivity extends BaseCompatActivity
         dl_main.addDrawerListener(toggle);
         //添加home打开drawerlayout的动画
         toggle.syncState();
+
     }
 
     //OnClickListener_start
@@ -170,13 +192,15 @@ public class MainActivity extends BaseCompatActivity
                                 SHARE_MEDIA.EMAIL,
                                 SHARE_MEDIA.SMS
                         };
-                new UMengShare(this, shareMedias).showShare();
+                new UMengShare(MainActivity.this, shareMedias).showShare();
                 break;
             case R.id.remind:
-                showToast(R.string.coming_soon);
+                showRemindAnimation(menu.getItem(1));
                 break;
-            case R.id.favorite:
-                showToast(R.string.coming_soon);
+            case R.id.gesture:
+                hideRemindAnimation();
+                ConstantUtils.isRightMode = !ConstantUtils.isRightMode;
+                showNavigationView();
                 break;
             case R.id.setting:
 
@@ -186,6 +210,59 @@ public class MainActivity extends BaseCompatActivity
         return false;
     }
     //OnMenuItemClickListener_end
+
+    public void showNavigationView() {
+        if (ConstantUtils.isRightMode) {
+            showToast("切换至右手操作");
+            dl_main.closeDrawer(nv_left);
+            dl_main.removeView(nv_left);
+            if (dl_main.indexOfChild(nv_right) == -1) {
+                dl_main.addView(nv_right);
+            }
+        } else {
+            showToast("切换至左手操作");
+            dl_main.closeDrawer(nv_right);
+            dl_main.removeView(nv_right);
+            if (dl_main.indexOfChild(nv_left) == -1) {
+                dl_main.addView(nv_left);
+            }
+        }
+    }
+
+    public void showRemindAnimation(MenuItem item) {
+        remindItem = item;
+
+        View menuItemActionView = getLayoutInflater().inflate(
+                R.layout.action_view, null
+        );
+        ImageView iv = (ImageView) menuItemActionView.findViewById(R.id.centerImage);
+        iv.setImageDrawable(item.getIcon());
+        remindItem.setActionView(menuItemActionView);
+
+/*        if (item.getItemId() == menu.getItem(itemIndex).getItemId()) {
+
+        }*/
+
+        rippleBackground = (RippleBackground) menuItemActionView.findViewById(R.id.content);
+        rippleBackground.startRippleAnimation();
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToast("打开消息界面");
+            }
+        });
+
+    }
+
+    private void hideRemindAnimation() {
+        if (remindItem != null) {
+            View view = remindItem.getActionView();
+            if (view != null) {
+                view.clearAnimation();
+                remindItem.setActionView(null);
+            }
+        }
+    }
 
     @Override
     public void onBackPressed() {
