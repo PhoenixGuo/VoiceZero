@@ -10,12 +10,14 @@
     app:rb_rippleAmount="3"
     app:rb_scale="3">
 
+
     <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/centerImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
         android:minHeight="48dp"
         android:minWidth="48dp"
         android:scaleType="centerInside" />
