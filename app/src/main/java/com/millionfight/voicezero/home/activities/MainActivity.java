@@ -6,9 +6,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -124,7 +126,7 @@ public class MainActivity extends BaseCompatActivity
         nv_right = (NavigationView) findViewById(R.id.nv_right);
 
         //默认上来是左手操作
-        dl_main.removeView(nv_right);
+        dl_main.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, nv_right);
     }
 
     @Override
@@ -215,17 +217,13 @@ public class MainActivity extends BaseCompatActivity
         if (ConstantUtils.isRightMode) {
             showToast("切换至右手操作");
             dl_main.closeDrawer(nv_left);
-            dl_main.removeView(nv_left);
-            if (dl_main.indexOfChild(nv_right) == -1) {
-                dl_main.addView(nv_right);
-            }
+            dl_main.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, nv_left);
+            dl_main.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, nv_right);
         } else {
             showToast("切换至左手操作");
             dl_main.closeDrawer(nv_right);
-            dl_main.removeView(nv_right);
-            if (dl_main.indexOfChild(nv_left) == -1) {
-                dl_main.addView(nv_left);
-            }
+            dl_main.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, nv_right);
+            dl_main.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, nv_left);
         }
     }
 
